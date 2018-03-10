@@ -1,0 +1,73 @@
+"----------------
+" file: ~/.vimrc
+" author: ptanguy
+" ---------------
+
+set nocompatible
+set title
+set encoding=utf-8
+
+execute pathogen#infect()
+
+if !exists("g:syntax_on")
+    syntax enable
+endif
+
+filetype on
+filetype plugin on
+filetype indent on
+inoremap ( ()<left>
+
+set number
+set ruler
+set wrap
+set textwidth=79
+
+"Indent
+set autoindent
+set smartindent
+
+"Tabs & space
+set tabstop=4
+set softtabstop=4
+set expandtab
+
+"Search
+set ignorecase
+set smartcase
+set showmatch
+set incsearch
+set hlsearch
+
+"Python
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+"Theme
+set t_Co=256
+set background=dark
+colorscheme solarized
+
+"NerdTree
+map <C-n> :NERDTreeToggle<CR>
+
+"Vim-airline & Vim-airline-theme
+let g:airline_solarized_bg='dark'
+
+"Vim-syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"Vimtex
