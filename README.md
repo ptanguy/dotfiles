@@ -6,7 +6,8 @@ Here are my current dotfiles ...
 
 Installing GNU Stow the software used to manage my dotfiles:
 
-	$ sudo apt-get install stow
+	$ apt-get install stow
+    $ apt-get install rxvt-unicode
 
 ## How to use it?
 
@@ -25,3 +26,14 @@ Use Git CVS to manage the .dotfiles dir.
 Like I use pathogen and git:
 
         $ git submodule https://github.com/scrooloose/nerdtree.git nerdtree/
+
+Then use with:
+    $ git clone ...
+    $ git submodule init
+    $ git submodule update
+    $ cd .dotfiles
+    $ stow i3
+
+## Load resource file
+
+  $ xrdb ~/.Xresources

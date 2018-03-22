@@ -49,6 +49,10 @@ au BufNewFile,BufRead *.py
     \ set autoindent
     \ set fileformat=unix
 
+" C
+" http://blog.rom1v.com/2012/11/formater-du-code-c-avec-indent-et-vim/
+autocmd BufNewFile,BufRead *.c,*.cc,*.cpp,*.h set formatprg=indent\ -kr\ -ts4
+
 "Theme
 set t_Co=256
 set background=dark
@@ -70,4 +74,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-"Vimtex
+" Vim-Wiki
+let g:vimwiki_list = [{'path': '~/Travail/kb/wiki/src', 'path_html': '~/Travail/kb/wiki/html', 'syntax': 'markdown', 'ext': '.md'}]
+
+" Vimtex
+let g:vimtex_compiler_latexmk = {'callback' : 0}

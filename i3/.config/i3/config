@@ -10,6 +10,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod1
+set $mod4 Mod4
 
 set $ws1 1:mail
 set $ws2 2:music
@@ -167,4 +168,12 @@ bar {
 }
 
 # Screen lock, black background
+bindsym $mod4+l exec i3lock -c "000000"
+
+# Screen lock and suspend , black background
 bindsym $mod+Shift+x exec --no-startup-id "i3lock -c 000000 ; systemctl suspend;"
+
+# Start network-manager
+exec --no-startup-id nm-applet
+
+
