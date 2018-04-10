@@ -7,6 +7,7 @@ set nocompatible
 set title
 set encoding=utf-8
 
+"Pathogen
 execute pathogen#infect()
 
 if !exists("g:syntax_on")
@@ -39,6 +40,11 @@ set showmatch
 set incsearch
 set hlsearch
 
+"Theme
+set t_Co=256
+set background=dark
+colorscheme solarized
+
 "Python
 au BufNewFile,BufRead *.py
     \ set tabstop=4
@@ -53,15 +59,11 @@ au BufNewFile,BufRead *.py
 " http://blog.rom1v.com/2012/11/formater-du-code-c-avec-indent-et-vim/
 autocmd BufNewFile,BufRead *.c,*.cc,*.cpp,*.h set formatprg=indent\ -kr\ -ts4
 
-"Theme
-set t_Co=256
-set background=dark
-colorscheme solarized
-
 "NerdTree
 map <C-n> :NERDTreeToggle<CR>
 
 "Vim-airline & Vim-airline-theme
+let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
 
 "Vim-syntastic
@@ -79,3 +81,12 @@ let g:vimwiki_list = [{'path': '~/Travail/kb/wiki/src', 'path_html': '~/Travail/
 
 " Vimtex
 let g:vimtex_compiler_latexmk = {'callback' : 0}
+
+" Vim -hdl
+" Configure the project file
+let g:vimhdl_conf_file = '<config/file>'
+" Tell Syntastic to use vim-hdl
+let g:syntastic_vhdl_checkers = ['vimhdl']
+
+
+
