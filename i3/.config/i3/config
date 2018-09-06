@@ -176,4 +176,14 @@ bindsym $mod+Shift+x exec --no-startup-id "i3lock -c 000000 ; systemctl suspend;
 # Start network-manager
 exec --no-startup-id nm-applet
 
+# Manage several monitors (snippet from https://christopherdecoster.com/posts/i3-wm/)
+set $displayMode "Set display mode [w]ork [l]aptop"
+bindsym $mod+x mode $displayMode
+mode $displayMode {
+    bindsym w exec "~/.config/i3/scripts/work-display.sh";
+    bindsym l exec "~/.config/i3/scripts/laptop-display.sh"; 
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
