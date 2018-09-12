@@ -15,6 +15,7 @@ order += "ipv6"
 order += "disk /"
 order += "ethernet _first_"
 order += "load"
+order += "battery 0"
 order += "tztime local"
 
 ethernet _first_ {
@@ -33,4 +34,15 @@ load {
 
 disk "/" {
         format = "%avail"
+}
+
+battery 0 {
+        format = "%status %percentage %remaining %emptytime"
+        format_down = "No battery"
+        status_chr = "⚡ CHR"
+        status_bat = "🔋 BAT"
+        status_unk = "? UNK"
+        status_full = "☻ FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
 }

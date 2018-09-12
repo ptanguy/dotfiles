@@ -28,3 +28,6 @@
 [submodule "vim/.vim/bundle/vim-dispatch"]
 	path = vim/.vim/bundle/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
+[submodule "bumblebee-status"]
+	path = i3/.config/i3/bumblebee-status
+	url = git://github.com/tobi-wan-kenobi/bumblebee-status
