@@ -6,16 +6,16 @@ set nocompatible
 set title
 set encoding=utf-8
 
-filetype on
 
-if !exists("g:syntax_on")
-    syntax enable
-endif
-
-filetype plugin on
-filetype indent on
-inoremap ( ()<left>
-
+"if !exists("g:syntax_on")
+"    syntax enable
+"endif
+"
+"filetype on
+"filetype plugin on
+"filetype indent on
+"inoremap ( ()<left>
+"
 set number
 set ruler
 set wrap
@@ -82,9 +82,9 @@ let g:vimtex_view_method = 'zathura'
 
 " Vim -hdl
 " Configure the project file
-let g:vimhdl_conf_file = '<config/file>'
+"let g:vimhdl_conf_file = '<config/file>'
 " Tell Syntastic to use vim-hdl
-let g:syntastic_vhdl_checkers = ['vimhdl']
+"let g:syntastic_vhdl_checkers = ['vimhdl']
 
 
 
