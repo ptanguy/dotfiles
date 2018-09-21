@@ -166,7 +166,7 @@ bindsym $mod+r mode "resize"
 bar {
 	font pango:Inconsolata 10
 	position bottom
-        status_command ~/.config/i3/bumblebee-status/bumblebee-status -m cpu memory battery date time -p interval=2.5 time.format="%H:%M CW %V" date.format="%a, %b %d %Y" -t gruvbox-powerline
+    status_command ~/.config/i3/bumblebee-status/bumblebee-status -m cpu memory battery date time -p interval=2.5 time.format="%H:%M" date.format="%a, %b %d %Y" -t solarized
 }
 #bar {
 #        status_command i3status
@@ -189,11 +189,12 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 
 # Manage several monitors (snippet from https://christopherdecoster.com/posts/i3-wm/)
-set $displayMode "Set display mode [w]ork [l]aptop"
+set $displayMode "Set display mode [w]ork [l]aptop [t]teaching"
 bindsym $mod+x mode $displayMode
 mode $displayMode {
     bindsym w exec "~/.config/i3/scripts/work-display.sh";
     bindsym l exec "~/.config/i3/scripts/laptop-display.sh"; 
+    bindsym t exec "~/.config/i3/scripts/teaching-display.sh"; 
 
     bindsym Return mode "default"
     bindsym Escape mode "default"

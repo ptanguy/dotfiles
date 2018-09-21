@@ -2,19 +2,16 @@
 " file: ~/.vimrc
 " author: ptanguy
 " ---------------
-
 set nocompatible
 set title
 set encoding=utf-8
 
-"Pathogen
-execute pathogen#infect()
+filetype on
 
 if !exists("g:syntax_on")
     syntax enable
 endif
 
-filetype on
 filetype plugin on
 filetype indent on
 inoremap ( ()<left>
@@ -43,7 +40,7 @@ set hlsearch
 "Theme
 set t_Co=256
 set background=dark
-colorscheme solarized
+"colorscheme solarized
 
 "Python
 au BufNewFile,BufRead *.py
@@ -81,6 +78,7 @@ let g:vimwiki_list = [{'path': '~/Travail/kb/wiki/src', 'path_html': '~/Travail/
 
 " Vimtex
 let g:vimtex_compiler_latexmk = {'callback' : 0}
+let g:vimtex_view_method = 'zathura'
 
 " Vim -hdl
 " Configure the project file

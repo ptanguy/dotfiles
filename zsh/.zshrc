@@ -30,3 +30,6 @@ RPROMPT=\$vcs_info_msg_0_
 #PROMPT=\$vcs_info_msg_0_'%# '
 #zstyle ':vcs_info:git:*' formats '%b'
 
+
+## ModelSim
+export PATH=/opt/quartus/prime/lite/17.0/modelsim_ase/bin:$PATH
