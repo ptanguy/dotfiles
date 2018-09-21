@@ -11,23 +11,16 @@ I use GNU Stow to manage my dotfiles:
 
 ## How to use it?
 
+    $ git clone ...
+    $ git submodule init
+    $ git submodule update
 	$ cd .dotfiles
 	$ stow "whatever"
 
 ## List of applications used
 
 ### Vim
-
-Like I use pathogen and git:
-
-        $ git submodule https://github.com/scrooloose/nerdtree.git nerdtree/
-
-Then use with:
-
-    $ git clone ...
-    $ git submodule init
-    $ git submodule update
-
+...
 
 ### Load resource file
 
