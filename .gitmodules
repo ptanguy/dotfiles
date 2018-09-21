@@ -1,32 +1,32 @@
 [submodule "vim/.vim/bundle/nerdtree"]
-	path = vim/.vim/bundle/nerdtree
+	path = vim/.vim/pack/plugins/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "vim/.vim/bundle/syntastic"]
-	path = vim/.vim/bundle/syntastic
+	path = vim/.vim/pack/plugins/start/syntastic
 	url = https://github.com/vim-syntastic/syntastic.git
 [submodule "vim/.vim/bundle/vim-colors-solarized"]
-	path = vim/.vim/bundle/vim-colors-solarized
+	path = vim/.vim/pack/plugins/start/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/.vim/bundle/vim-sensible"]
-	path = vim/.vim/bundle/vim-sensible
+	path = vim/.vim/pack/plugins/start/vim-sensible
 	url = https://github.com/tpope/vim-sensible.git
 [submodule "vim/.vim/bundle/vimtex"]
-	path = vim/.vim/bundle/vimtex
+	path = vim/.vim/pack/plugins/start/vimtex
 	url = https://github.com/lervag/vimtex.git
 [submodule "vim/.vim/bundle/vim-airline-themes"]
-	path = vim/.vim/bundle/vim-airline-themes
+	path = vim/.vim/pack/plugins/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
 [submodule "vim/.vim/bundle/vim-airline"]
-	path = vim/.vim/bundle/vim-airline
+	path = vim/.vim/pack/plugins/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline
 [submodule "vim/.vim/bundle/vimwiki"]
-	path = vim/.vim/bundle/vimwiki
+	path = vim/.vim/pack/plugins/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
 [submodule "vim/.vim/bundle/vim-hdl"]
-	path = vim/.vim/bundle/vim-hdl
+	path = vim/.vim/pack/plugins/start/vim-hdl
 	url = https://github.com/suoto/vim-hdl.git
 [submodule "vim/.vim/bundle/vim-dispatch"]
-	path = vim/.vim/bundle/vim-dispatch
+	path = vim/.vim/pack/plugins/start/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
 [submodule "bumblebee-status"]
 	path = i3/.config/i3/bumblebee-status
