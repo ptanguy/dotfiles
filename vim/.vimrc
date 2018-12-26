@@ -2,20 +2,21 @@
 " file: ~/.vimrc
 " author: ptanguy
 " ---------------
+set runtimepath =$HOME/.dotfiles/vim/.vim,$VIMRUNTIME " because vimtex not found if symlink
 set nocompatible
 set title
 set encoding=utf-8
 
 
-"if !exists("g:syntax_on")
-"    syntax enable
-"endif
-"
-"filetype on
-"filetype plugin on
-"filetype indent on
-"inoremap ( ()<left>
-"
+if !exists("g:syntax_on")
+    syntax enable
+endif
+
+filetype on
+filetype plugin on
+filetype indent on
+inoremap ( ()<left>
+
 set number
 set ruler
 set wrap
@@ -40,7 +41,7 @@ set hlsearch
 "Theme
 set t_Co=256
 set background=dark
-"colorscheme solarized
+colorscheme solarized
 
 "Python
 au BufNewFile,BufRead *.py
