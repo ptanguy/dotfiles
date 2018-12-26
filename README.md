@@ -38,4 +38,5 @@ List of applications to test
 | Web browser    | qutebrowser |
 | Chat client    | weechat     |
 | Mail           | mutt        |
+| RSS/Atom       | newsboat    |
 

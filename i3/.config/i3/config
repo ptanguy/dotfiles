@@ -8,19 +8,30 @@
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
-
 set $mod Mod1
 set $mod4 Mod4
 
 set $ws1 1:mail
 set $ws2 2:music
-set $ws3 3:www
-set $ws4 4:code
-set $ws5 5:latex
+set $ws3 3:note
+set $ws4 4:dev
+set $ws5 5:write
+set $ws6 6:veille
+set $ws7 7:visio
+set $ws8 8:simu
+set $ws9 9:tmp
+set $ws0_speaker 0:speaker
+#set $ws0_audience "0:audience" output HDMI-1
+set $ws0_audience 0:audience
+
+
+set $dispSpeacker eDP-1
+set $dispAudience DP-1-2
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:source sans pro 10
+#font pango:monospace 8
 #font pango:Noto Mono Regular 13
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -45,7 +56,9 @@ bindsym $mod+Return exec urxvt -e /usr/bin/zsh
 bindsym $mod+Shift+a kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -modi drun -show drun
+#bindsym $mod+d exec dmenu_run
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -101,17 +114,19 @@ bindsym $mod+q focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+
+
 # switch to workspace
 bindsym $mod+ampersand workspace $ws1
 bindsym $mod+eacute workspace $ws2
 bindsym $mod+quotedbl workspace $ws3
 bindsym $mod+apostrophe workspace $ws4
 bindsym $mod+parenleft workspace $ws5
-bindsym $mod+minus workspace 6
-bindsym $mod+egrave workspace 7
-bindsym $mod+underscore workspace 8
-bindsym $mod+ccedilla workspace 9
-bindsym $mod+agrave workspace 10
+bindsym $mod+minus workspace $ws6
+bindsym $mod+egrave workspace $ws7
+bindsym $mod+underscore workspace $ws8
+bindsym $mod+ccedilla workspace $ws9
+bindsym $mod+agrave workspace $ws0_speaker output $dispSpeacker ; workspace $ws0_audience output $dispAudience
 
 # move focused container to workspace
 bindsym $mod+Shift+ampersand move container to workspace $ws1
@@ -119,11 +134,11 @@ bindsym $mod+Shift+eacute move container to workspace number $ws2
 bindsym $mod+Shift+quotedbl move container to workspace number $ws3
 bindsym $mod+Shift+apostrophe move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+minus move container to workspace 6
-bindsym $mod+Shift+egrave move container to workspace 7
-bindsym $mod+Shift+underscore move container to workspace 8
-bindsym $mod+Shift+ccedilla move container to workspace 9
-bindsym $mod+Shift+agrave move container to workspace 10
+bindsym $mod+Shift+minus move container to workspace $ws6
+bindsym $mod+Shift+egrave move container to workspace $ws7
+bindsym $mod+Shift+underscore move container to workspace $ws8
+bindsym $mod+Shift+ccedilla move container to workspace $ws9
+bindsym $mod+Shift+agrave move container to workspace $ws0
 
 # force a window on a named workspace
 #assign [class="Firefox"] $ws3
@@ -132,8 +147,6 @@ bindsym $mod+Shift+agrave move container to workspace 10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -174,13 +187,50 @@ bar {
 #}
 #
 # return to session manager, d for deconnect without closing
-bindsym $mod4+d exec dm-tool switch-to-greeter
+#bindsym $mod4+d exec dm-tool switch-to-greeter
+
+# Shortcut applications
+bindsym $mod+F1 exec firefox
 
 # Screen lock, black background, l for lock
-bindsym $mod4+l exec i3lock -c "000000"
+#bindsym $mod4+l exec i3lock -c "000000"
 
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 # Screen lock and suspend , black background
-bindsym $mod+Shift+x exec --no-startup-id "i3lock -c 000000 ; systemctl suspend;"
+bindsym $mod+Shift+s exec --no-startup-id "i3lock -c 000000 ; systemctl suspend;"
+bindsym $mod+Shift+h exec --no-startup-id "i3lock -c 000000 ; systemctl hibernate;"
+
+set $locker i3lock -c "000000"
+
+set $systemMode "[l]ock, [d]isconnect, (e)xit, [s]uspend, [h]ibernate, [r]eboot, [p]oweroff"
+bindsym $mod4+l mode $systemMode
+mode $systemMode {
+        bindsym l exec --no-startup-id $Locker && sleep 1, mode "default"
+        bindsym d exec --no-startup-id dm-tool switch-to-greeter
+        bindsym e exec --no-startup-id i3-msg exit, mode "default"
+        bindsym s exec --no-startup-id $Locker && sleep 1 && systemctl suspend, mode "default"
+        bindsym h exec --no-startup-id $Locker && sleep 1 && systemctl hibernate, mode "default"
+        bindsym r exec --no-startup-id systemctl reboot, mode "default"
+        bindsym p exec --no-startup-id  systemctl poweroff -i, mode "default"
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Manage several monitors (snippet from https://christopherdecoster.com/posts/i3-wm/)
+set $displayMode "Set display mode [w]ork [l]aptop [t]eaching [p]resentation"
+bindsym $mod+x mode $displayMode
+mode $displayMode {
+    bindsym w exec "~/.config/i3/scripts/work-display.sh";
+    bindsym l exec "~/.config/i3/scripts/laptop-display.sh"; 
+    bindsym t exec "~/.config/i3/scripts/teaching-display.sh"; 
+    bindsym p exec "~/.config/i3/scripts/presentation-display.sh"; 
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 # Start network-manager
 exec --no-startup-id nm-applet
@@ -188,15 +238,9 @@ exec --no-startup-id nm-applet
 # Start network-manager
 exec --no-startup-id blueman-applet
 
-# Manage several monitors (snippet from https://christopherdecoster.com/posts/i3-wm/)
-set $displayMode "Set display mode [w]ork [l]aptop [t]teaching"
-bindsym $mod+x mode $displayMode
-mode $displayMode {
-    bindsym w exec "~/.config/i3/scripts/work-display.sh";
-    bindsym l exec "~/.config/i3/scripts/laptop-display.sh"; 
-    bindsym t exec "~/.config/i3/scripts/teaching-display.sh"; 
+# Notification
+exec --no-startup-id dunst &
 
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+# Adjust monitor color temperature based on time.
+exec --no-startup-id redshift-gtk &
 

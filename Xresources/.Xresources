@@ -47,17 +47,16 @@
 URxvt.loginShell: true
 URxvt*saveLines: 1000
 URxvt*scrollBar: false
-
+URxvt*dynamicColors: on
 
 ! Fonts
 ! -----
-!Inconsolata
-URxvt.font: xft:Inconsolata-12
-URxvt.boldFont: xft:Inconsolata-12
-URxvt.letterSpace: -1
-! Monaco Linux font
-!URxvt*font: xft:Monaco:pixelsize=15
-!URxvt*boldFont: xft:Monaco:bold:pixelsize=15
+!URxvt*font: xft:Inconsolata-14
+!URxvt*boldFont: xft:Inconsolata-14
+URxvt*font: xft:Monospace:pixelsize=13:antialias=true:hinting=true
+URxvt*boldFont: xft:Monospace:pixelsize=13:antialias=true:hinting=true
+
+URxvt*letterSpace: -1
 
 ! Theme
 ! -----
@@ -85,4 +84,34 @@ URxvt*color12:                 S_base0
 URxvt*color13:                 S_violet
 URxvt*color14:                 S_base1
 URxvt*color15:                 S_base3
+
+! ------------------------------------------------------------------------------
+! ! ROFI Color theme !
+! ------------------------------------------------------------------------------
+!rofi.color-enabled: true
+!rofi.color-window: #002b36, #002b36, #7d9002
+!rofi.color-normal: #002b36, #eee8d5, #002b36, #002b36, #f39c11
+!rofi.color-active: #002b36, #eee8d5, #002b36, #002b36, #f39c11
+!rofi.color-urgent: #002b36, #dc322f, #002b36, #002b36, #e02c6d
+!rofi.font: SauceCodePro Nerd Font 8
+!rofi.separator-style: none 
+!rofi.hide-scrollbar: true
+!rofi.location: 2
+!rofi.width: 640 
+!rofi.lines: 8 
+!rofi.yoffset: 26
+!
+
+
+! ------------------------------------------------------------------------------
+! ! Xft !
+! ------------------------------------------------------------------------------
+Xft.dpi: 96 
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb 
+Xft.autohint: false 
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+!
 
