@@ -141,6 +141,8 @@ bindsym $mod+Shift+egrave move container to workspace $ws7
 bindsym $mod+Shift+underscore move container to workspace $ws8
 bindsym $mod+Shift+ccedilla move container to workspace $ws9
 bindsym $mod+Shift+agrave move container to workspace $ws0
+bindsym $mod+Shift+F5 move container to workspace $ws_speaker
+bindsym $mod+Shift+F6 move container to workspace $ws_audience
 
 # force a window on a named workspace
 #assign [class="Firefox"] $ws3
