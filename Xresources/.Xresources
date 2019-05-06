@@ -49,13 +49,26 @@ URxvt*saveLines: 1000
 URxvt*scrollBar: false
 URxvt*dynamicColors: on
 
+! keybinding
+! -----
+URxvt.copyCommand:  xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.keysym.Mod1-c: clipboard:copy
+URxvt.keysym.Mod1-v: clipboard:paste
+URxvt.keysym.Mod4-C-v: clipboard:paste_escaped
+URxvt.keysym.M-c: clipboard:copy
+URxvt.keysym.M-v: clipboard:paste
+URxvt.keysym.M-C-v: clipboard:paste_escaped
+URxvt.keysym.M-Escape: keyboard-select:activate
+URxvt.keysym.C-Escape: keyboard-select:activate
+URxvt.keysym.M-u: url-select:select_next
+
 ! Fonts
 ! -----
 !URxvt*font: xft:Inconsolata-14
 !URxvt*boldFont: xft:Inconsolata-14
 URxvt*font: xft:Monospace:pixelsize=13:antialias=true:hinting=true
 URxvt*boldFont: xft:Monospace:pixelsize=13:antialias=true:hinting=true
-
 URxvt*letterSpace: -1
 
 ! Theme

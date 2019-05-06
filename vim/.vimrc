@@ -75,7 +75,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " Vim-Wiki
-let g:vimwiki_list = [{'path': '~/Travail/kb/wiki/src', 'path_html': '~/Travail/kb/wiki/html', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/travail/kb/wiki/src', 'path_html': '~/travail/kb/wiki/html', 'syntax': 'markdown', 'ext': '.md'}]
 
 " Vimtex
 let g:vimtex_compiler_latexmk = {'callback' : 0}

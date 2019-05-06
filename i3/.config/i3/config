@@ -11,28 +11,31 @@
 set $mod Mod1
 set $mod4 Mod4
 
-set $ws1 1:mail
-set $ws2 2:music
-set $ws3 3:note
-set $ws4 4:dev
-set $ws5 5:write
-set $ws6 6:veille
-set $ws7 7:visio
-set $ws8 8:simu
-set $ws9 9:tmp
-set $ws0_speaker 0:speaker
-#set $ws0_audience "0:audience" output HDMI-1
-set $ws0_audience 0:audience
+set $ws1 "1: mail"
+set $ws2 "2: music"
+set $ws3 "3: note"
+set $ws4 "4: dev"
+set $ws5 "5: write"
+set $ws6 "6: veille"
+set $ws7 "7: visio"
+set $ws8 "8: simu"
+set $ws9 "9: tmp"
+set $ws_speaker "10: speaker"
+set $ws_audience "11: audience"
 
 
-set $dispSpeacker eDP-1
-set $dispAudience DP-1-2
+#set $dispSpeaker eDP1
+#set $dispAudience DP1-2
+
+workspace $ws_speaker output eDP1 #primary
+workspace $ws_audience output DP1-2 #secondary
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:source sans pro 10
+#font pango:source sans pro 10
 #font pango:monospace 8
 #font pango:Noto Mono Regular 13
+font pango:DejaVu Sans Mono Book 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -114,8 +117,6 @@ bindsym $mod+q focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-
-
 # switch to workspace
 bindsym $mod+ampersand workspace $ws1
 bindsym $mod+eacute workspace $ws2
@@ -126,7 +127,8 @@ bindsym $mod+minus workspace $ws6
 bindsym $mod+egrave workspace $ws7
 bindsym $mod+underscore workspace $ws8
 bindsym $mod+ccedilla workspace $ws9
-bindsym $mod+agrave workspace $ws0_speaker output $dispSpeacker ; workspace $ws0_audience output $dispAudience
+bindsym $mod+F5 workspace $ws_speaker
+bindsym $mod+F6 workspace $ws_audience
 
 # move focused container to workspace
 bindsym $mod+Shift+ampersand move container to workspace $ws1
@@ -197,12 +199,9 @@ bindsym $mod+F1 exec firefox
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-# Screen lock and suspend , black background
-bindsym $mod+Shift+s exec --no-startup-id "i3lock -c 000000 ; systemctl suspend;"
-bindsym $mod+Shift+h exec --no-startup-id "i3lock -c 000000 ; systemctl hibernate;"
 
+# cf https://wiki.archlinux.org/index.php/I3
 set $locker i3lock -c "000000"
-
 set $systemMode "[l]ock, [d]isconnect, (e)xit, [s]uspend, [h]ibernate, [r]eboot, [p]oweroff"
 bindsym $mod4+l mode $systemMode
 mode $systemMode {
@@ -220,17 +219,30 @@ mode $systemMode {
 }
 
 # Manage several monitors (snippet from https://christopherdecoster.com/posts/i3-wm/)
-set $displayMode "Set display mode [w]ork [l]aptop [t]eaching [p]resentation"
+set $displayMode "Set display mode [w]ork [l]aptop [t]eaching [p]resentation [h]ome"
 bindsym $mod+x mode $displayMode
 mode $displayMode {
     bindsym w exec "~/.config/i3/scripts/work-display.sh";
     bindsym l exec "~/.config/i3/scripts/laptop-display.sh"; 
     bindsym t exec "~/.config/i3/scripts/teaching-display.sh"; 
     bindsym p exec "~/.config/i3/scripts/presentation-display.sh"; 
+    bindsym h exec "~/.config/i3/scripts/home-display.sh"; 
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
+#change volume
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
+bindsym XF86AudioMute exec amixer set Master toggle
+#
+## music control
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioStop exec mpc stop
+
 
 # Start network-manager
 exec --no-startup-id nm-applet
@@ -242,5 +254,9 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id dunst &
 
 # Adjust monitor color temperature based on time.
-exec --no-startup-id redshift-gtk &
+#exec --no-startup-id redshift-gtk &
+#
+# Xsettingsh fontconfig
+exec --no-startup-id xsettingsd &
+
 
