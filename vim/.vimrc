@@ -87,5 +87,6 @@ let g:vimtex_view_method = 'zathura'
 " Tell Syntastic to use vim-hdl
 "let g:syntastic_vhdl_checkers = ['vimhdl']
 
-
-
+" Vim-notes
+let g:notes_directories = ['~/travail/kb/notes']
+let g:notes_suffix = '.md'
